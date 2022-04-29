@@ -42,7 +42,7 @@ pool2.connect().then(client => {
 
  const Filter = (req, res, next) => {
 	 const nftid = (Boolean(req.query.id)) ? req.query.id : "*";
-	pool.query(
+	pool2.query(
 		datafull, [nftid],
 	(error, results) => {
 		if (error) {
@@ -70,7 +70,7 @@ pool2.connect().then(client => {
 const nftpage = (req, res, next) => {
 	const nftidparam = req.query.nftid;
 
-	pool.query(
+	pool2.query(
 		datasingle, [nftidparam],
 		(error, results) => {
 			if (error) {
@@ -88,7 +88,7 @@ const selector = (req, res, next) => {
 	var param = req.params.param;
 	var paramid = param + "id";
 
-	pool.query(
+	pool2.query(
 		format(dataselector, paramid, param),
 		(error, results) => {
 			if (error) {
@@ -100,7 +100,7 @@ const selector = (req, res, next) => {
 }
 
 const tablename = (req, res, next) => {
-	pool.query(tablenameQuery, (error, results) => {
+	pool2.query(tablenameQuery, (error, results) => {
 		if(error){
 			throw error;
 		}
