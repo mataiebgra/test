@@ -31,6 +31,7 @@ app.use('/users', usersRouter);
 app.use('/Filter', db.Filter);
 app.use('/nftpage', db.nftpage);
 app.use('/selector/:param',db.selector);
+app.use('/attribute', db.tablename);
 
 
 // catch 404 and forward to error handler

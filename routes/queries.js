@@ -5,6 +5,7 @@ const fs = require('fs');
 const datasingle = fs.readFileSync('./query_item.sql').toString();
 const datafull = fs.readFileSync('./fullnftquery.sql').toString();
 const dataselector = fs.readFileSync('./selector.sql').toString();
+const tablenameQuery = fs.readFileSync('./tablename.sql').toString();
 
 const Pool = require("pg").Pool;
 
@@ -98,9 +99,19 @@ const selector = (req, res, next) => {
 	);
 }
 
+const tablename = (req, res, next) => {
+	pool.query(tablenameQuery, (error, results) => {
+		if(error){
+			throw error;
+		}
+		res.status(200).json(results.rows);
+	})
+}
+
 
 module.exports ={
 	Filter,
 	nftpage,
-	selector
+	selector,
+	tablename
   }
