@@ -20,10 +20,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors({
-  // origin: 'http://localhost:3000'
-  origin: 'https://vega-chain-feature-drop-lypqcy.herokuapp.com'
-}));
+var corsOptions = {
+origin: ["https://vega-chain-feature-drop-lypqcy.herokuapp.com","http://localhost:8100"],
+optionsSuccessStatus: 200 // For legacy browser support
+}
+
+app.use(cors(corsOptions));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/Filter', db.Filter);

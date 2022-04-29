@@ -1,1 +1,1 @@
-SELECT * FROM main.nft
+SELECT * FROM main.nft WHERE sexe LIKE '%'?'%' ORDER BY ranking ASC
